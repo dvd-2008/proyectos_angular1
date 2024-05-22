@@ -1,0 +1,29 @@
+<div class="row">
+
+
+  
+    <div class="col col-5 border border-2 border-primary shadow mt-3 mb-3 bg-light">
+
+        <p [style.color]="'green'" [style.font-size]="'35px'">Directiva de Atributo ngStyle</p>
+        <hr />
+        <section [ngStyle]="{'border':'solid 2px black', 'padding':'10px', 'margin':'10px', 'background':'green'}">
+            <p [style.color]="'white'" [style.font-size]="'40px'">ngStyle mediante objeto</p>
+        </section>
+
+        <hr />
+        <span *ngFor="let n of numeros" [ngStyle]="aplicaEstilo(n)">{{n}}</span>
+
+        <hr />
+        <span *ngFor="let fruta of frutas" [ngStyle]="asignaEstiloXVitamina(fruta.propiedad)">{{fruta.nombre}} </span>
+    </div>
+
+    <div class="col col-6 border border-2 border-primary shadow ms-2 mt-3">
+        <p [ngClass]="['lead','fs-2','text-white','bg-warning', 'p-2 m-2']">Directiva Atributo ngClass aplicado [estilo,
+            estilo]</p>
+        <p [ngClass]="'text-white lead fs-4 bg-primary p-2 m-2'">Aplicando ngClass con un string</p>
+
+        <button (click)="cambiaEstiloParrafo()" [ngClass]="'btn btn-sm btn-danger m-2 p-2'">Cambia Estilo</button>
+        <p [ngClass]="defineEstiloClase()">{{textoParrafo}}</p>
+    </div>
+
+</div>

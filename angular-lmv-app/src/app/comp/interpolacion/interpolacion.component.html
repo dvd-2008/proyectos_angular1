@@ -1,0 +1,83 @@
+<div class="row m-2">
+    <p class="lead fs-2 text-primary">{{titulo}}</p>
+    <p class="lead">{{subtitulo}}</p>
+    <p class="lead">{{subtitulo_cap}}</p>
+    
+    <div class="col col-5 border border-3 border-primary me-3">
+        <p class="lead fs-2 text-primary">Revisando interpolacion (numerica)</p>
+        <p class="lead fs-2">La suma de {{n1}} + {{n2}} es: {{n1+n2}}</p>
+        <p class="lead fs-2">La resta de {{n1}} - {{n2}} es: {{n1-n2}}</p>
+        <p class="lead fs-2">La multiplicacion de {{n1}} x {{n2}} es: {{n1*n2}}</p>
+
+
+        <div *ngIf="n2!==0; else esCero">
+            <p class="lead fs-2">La division de {{n1}} / {{n2}} es: {{n1/n2}}</p>
+            <p class="lead fs-2">el residuo de {{n1}} % {{n2}} es: {{n1%n2}}</p>
+        </div>
+
+        <ng-template #esCero>
+            <div>
+                <p class="alert alert-danger lead fs-4">El valor de n2 es {{n2}} (no se puede dividir)</p>
+            </div>
+        </ng-template>
+
+    </div>
+
+    <div class="col col-5 border border-3 border-primary ms-3">
+
+        <p class="lead fs-2 text-primary">Continuacion de interpolacion</p>
+        <p class="lead fs-2 text-primary">Sueldo en Soles S/. {{sueldo}}</p>
+
+        <div class="accordion accordion-flush border border-3" id="accordionFlushExample">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-primary text-white" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                        aria-controls="flush-collapseOne">
+                        {{textD}}
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        $/. {{cambiaSolesAMoneda(sueldo,1)}} al tipo de cambio: {{tipoCambioSD}} sol por dolar
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-dark text-white" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                        aria-controls="flush-collapseTwo">
+                        {{textE}}
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        EUR/. {{cambiaSolesAMoneda(sueldo,2)}} al tipo de cambio: {{tipoCambioSE}} sol por euro
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-ligth" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            {{textL}}
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            {{cambiaSolesAMoneda(sueldo,3)}} Libras al tipo de cambio: {{tipoCambioSL}} sol por libra
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

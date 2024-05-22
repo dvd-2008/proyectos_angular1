@@ -1,0 +1,227 @@
+1.- Angular: framework, utilizar js como typescript.
+2.- A evoluciona angular menor a v2 que la actual.
+3.- Se orienta a clases componentes.
+-----------------------------------------------------
+Configurar 
+1.- CLI instalar, es un herramientas que genera proyecto en angular asi como los elementos que pueden ser incluidos.
+2.- Congifurar CLI.
+npm install -g @angular/cli
+3.- Para comprobar la version: ng version
+======================================================
+Generar un proyecto:
+1.- Comando: ng new nombre-app
+ng new angular-lmv-app
+2.- Compilar el proyecto creado: (nos situamos dentro del proyecto)
+ng serve
+3.- localhost:4200
+==========================================================
+1.- index.html renderiza a vista
+2.- contiene un app-root (selector) el cual se encuentra en la cabecera del archivo ts (clase) app principal.
+3.- Como identifico al tipo de elemento dentro del proyecto angular: mediante su decorador.
+==========================================================
+4.- componente en Angular: (ts,html,css) ts:modelo, controller. html: vista
+
+================================================================================
+CONFIGURAR E INSTALAR BOOTSTRAP:
+1.- Instalamos framework bootstrap
+npm install bootstrap
+2.- Configurar en el archivo angular.json
+ 
+            "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
+====================================================================================================================
+Interpolacion: permite enviar al html elementos o propiedades que se definen ts, ademas de resultados de funciones
+Ejercicio1: Se tiene un sueldo en soles se desea que se muestre al tipo de cambio dolar, libra y euro.
+Generar una funcion por cada tipoCambio y mostrar en un accordion.
+
+Directivas: Estructurales--> *ngIF, *ngFor, [ngSwitch]: ngSwitchCase
+====================================
+
+*ngIf=condicion (true) se muestra
+Ejercicio: Dependiendo del tiempo de servicio se muestra si el asegurado puede jubilarse. 
+tiempo servicio > 25 años se podra jubilar en caso contrario no aplica
+
+ngSwitch: condicional multiple
+*ngSwitchCase
+*ngSwitchDefault
+
+Ejercicio2: Mostrar la Actividad a realizar dependendiendo del valor de la actividad=(1,2,3...)
+[]: ts --> html
+(): html -->ts
+
+Ejercicio3: Mediante un boton se quiere ir a la siguiente actividad. si llega al final debe mostrar el boton Finalizar.
+Ejercicio4: Si llego a finalizar al darle clic ya no muestra el boton.
+
+*ngFor iterar los elementos de una estructura
+la forma para recorrer la data es: let variable of arreglo
+Ejercicio 5: Mostrar las frutas que provienen del arreglo de frutas en el data.ts
+
+=========================================================================================
+Directivas Atributos: son aquellas que permite dar el estilo a la etiqueta.
+----------------------------------------
+ngStyle, ngClass.
+
+ngStyle: son estilo personalizados. hay dos formas de asignacion: [ngStyle], [style.propiedad]
+
+Ejercicio1: darle estilo a los numeros que provienen de un arreglo. si es par un estilo si no lo es otro estilo.
+Ejercicio2: Leer de un archivo de data.ts las frutas e indicar el estilo de la siguiente manera con ngStyle:
+Si la vitamina es C pintar de naranja
+Si la vitamina es A pintar de verde
+Si la vitamina es B pintar de amarillo
+Si la vitamina es K pintar de azul
+
+==================================================================================
+ngClass: estilo que puede provenir de un framework: bootstrap.
+[ngClass]="[estiloA, estiloB,...]"
+[ngClass]="'todo el estilo que le quiero aplicar'"
+
+Ejercicio3: darle el estilo al parrafo desde el archivo ts, mediante 
+un boton permita cambiar el estilo al parrafo use ngClass.
+
+Componente: esta formado ts, html, css
+============
+un componente genera un folder que los agrupa.
+Componente como se genera: 
+1.- ng generate component folder-componentes/nombre-componente --skip-tests
+2.- ng g c folder-componentes/nombr-componente --skip-tests
+
+Ejercicio4: generacion de componentes.
+ng g c comp/interpolacion --skip-tests
+
+Ejercicio5: que el parrafo cambie cada 2 seg de estilo. 
+Sugerencia verifique el ciclo de vida 
+del componente.
+
+1.- ngOnInit(): se ejecuta luego de que el constructor inicia las propiedades.
+2.- ngOnDestroy(): se ejecuta al destruir o cerrar la pagina.
+
+Ejercicio6: una vez paso 5 seg ya no cambia el valor del texto. sugerencia use: setTimeOut
+
+---------------------------------------------------------------------------------
+Rutas: angular contiene un modulo para rutear los componentes.
+path:'alias del componente', component:NombreComponente.
+
+Ejercicio: generar un menu con rutas de cada componente a generar.
+<a routerLink="alias">Enlace1</a>
+
+================================================================================
+PIPES: son elementos que nos permite modificar la salida en el html (darle formato, o convertir la salida a partir del dato de entrada)
+pipes de angular.
+
+1.- ng g c comp/tuberias --skip-tests
+2.- Revisar los pipes de angular
+----------------------------------------------
+lowercase: convertir en minuscula el texto
+uppercase: convertir en mayuscula el texto
+percent: muestra en % el valor number ingresado
+number: le da formato de salida los valores numericos separando por comas la parte entera y agrupa de 3 en tres (parte entera como decimal)
+currency: pipe moneda
+date: formato a la fecha
+
+Ejercicio: mostrar 3 simbolos de moneda (indicando pais y las 3 letras)
+Ejercicio2: date: formato dd/MM/yyyy
+Ejercicio3: muestre dias mes año horas minutos seg
+shortTime
+==================================================================================
+Pipe crear un pipe.
+ng g p folder-pipes/nombre-pipe --skip-tests
+Ejercicio4: generar un pipe que permita indicar la evolucion de un influencer de acuerdo al nro de vistas en la red social (youtube)
+-----------------------
+numeros de vistas<50 (esta iniciandose como influencer)
+numeros de vistas >=50 <2000 (influencer con cierta audiencia)
+numero de vistas >=2000 <100000 (influencer promedio)
+numero de vistas >=100000  (influencer con gran acogida)
+
+ng g p pipes/vistas --skip-tests
+
+Ejericio5: generar un pipe que permita realizar una busqueda o filtro de frutas por nombre. 
+
+componente: tienda-frutas: 
+ng g c comp/tienda-frutas --skip-tests
+
+[(ngModel)] requiero llamar a un modulo angular: FormsModule
+
+ng g p pipes/buscador-frutas --skip-tests
+
+Ejericio6: generar un pipe que permita realizar una busqueda o filtro de frutas por nombre y tipo
+=========================================================================================================
+
+Template-driven: html sobre el ts (Modulo: FormsModule) el manejo se realiza en el archivo html
+Model-driven: ts sobre html (Modulo: ReactiveFormsModule) el manejo se realiza basicamente en el archivo ts
+
+-----------------------------------------------------------------------------------------------------------
+Ejercicio1: 
+Generar un formulario para registro de frutas con template-driven, valide los controles 
+y que el boton de registro se habilite solo cuando el formulario se encuentre validado correctamente.
+mostrar en una tabla las frutas registradas. No permite agregar una misma fruta.
+
+componente: ng g c comp/template-driven --skip-tests
+-----------------------------------------------------------------------------------------------------------
+
+Model Driven: ts sobre html. modulo: ReactiveFormsModule
+Ejercicio2: Formulario de registro de frutas. usando model-driven
+Mostrar en tarjetas las frutas registradas 
+
+componente: ng g c comp/model-driven --skip-tests
+-----------------------------------------------------------------------------------------------------------
+Servicio: es un elemento de angular (clase)
+Decorador: @Injectable()
+DPI: no hacer new a la clase para poder utilizar.
+---------------------------------------------------------------------------------------------------
+
+Ejercicio: Generar un servicio para consumir un cliente empleados que se encuentra en un api-server.
+
+Comando crear servicio:
+ng g s servicios/nombre-servicio --skip-tests
+ng g s servicios/empleado --skip-tests
+
+Componente que consume el servicio de empleados:
+ng g c comp/gestor-empleado --skip-tests
+==========================================================
+1.- configurar el HttpClientModule en el modulo principal
+import { HttpClientModule} from '@angular/common/http';
+
+2.- generamos nuestro servicio:
+
+3.- empezamos a codificar los metodos del servicios:
+get--> consulta la informacion del servicio empleado.
+post --> registrar
+delete --> eliminar
+
+4.- Se pide Editar y Actualizar sobre el mismo formulario.
+editar --> codigo
+put--> actualizar 
+----------------------------------------------------------
+REACT:
+1.- gestor-tienda: 
+(comp1 TARJETAS DE PROD)--(comp2 CARRITO: detalle boleta)--(comp navegador: modal: detalle)
+
+REDUX:
+2.- gestor-tienda: (redux)
+store(variables estado)
+
+================================================================
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

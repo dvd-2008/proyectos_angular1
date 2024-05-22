@@ -1,0 +1,79 @@
+<div class="row m-2">
+    <div class="col col-6 border border-3 border-primary me-3">
+        <p class="lead fs-2">Directiva Estructural *ngIf</p>
+
+        <div *ngIf="tiempoServicio>25; else noPuedeJubilarse" class="alert alert-primary">
+            <p class="lead fs-4">Ud puede Jubilarse tiempo Servicio: {{tiempoServicio}}</p>
+        </div>
+
+        <ng-template #noPuedeJubilarse>
+            <div class="alert alert-danger">
+                <p class="lead fs-4">Ud no puede Jubilarse porque su T.Servicio es: {{tiempoServicio}}</p>
+            </div>
+        </ng-template>
+
+    </div>
+
+    <div class="col col-4 border border-3 border-primary ms-4">
+        <p class="lead fs-2">Directiva Estructural *ngIf</p>
+
+        <div *ngIf="edad>18; else noPuedeSufragar" class="alert alert-success">
+            <p class="lead fs-4">Ud puede sufragar Edad:{{edad}}</p>
+        </div>
+
+        <ng-template #noPuedeSufragar>
+            <div class="alert alert-danger">
+                <p class="lead fs-4">Ud no puede sufragar Edad: {{edad}}</p>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+<div class="row m-2">
+    <div class="col col-5 border border-2 border-primary shadow mt-3 mb-3">
+      <p class="lead fs-4 text-primary">Directiva Estructural ngSwitch</p>
+
+      <div *ngIf="muestrabtnActividad; else closeActividad">
+        <button class="btn btn-sm btn-warning mb-3" (click)="siguienteActividad()">{{btnTextoActividad}}</button>
+      </div>
+
+      <ng-template #closeActividad>
+        <button *ngIf="muestrabtnClose" class="btn btn-sm btn-danger mb-3 me-4"
+          (click)="cierreActividad()">{{btnTextoActividad}}</button>
+      </ng-template>
+      <hr />
+
+      <div [ngSwitch]="actividad" class="alert alert-primary">
+        <div *ngSwitchCase="1">Actividad {{actividad}}: Reunion con gerencia</div>
+        <div *ngSwitchCase="2">Actividad {{actividad}}: Reunion con equipo desarrollo</div>
+        <div *ngSwitchCase="3">Actividad {{actividad}}: Revision de avances</div>
+        <div *ngSwitchCase="4">Actividad {{actividad}}: Reunion con usuarios</div>
+        <div *ngSwitchDefault>Finalizo correctamente sus actividades diarias </div>
+      </div>
+    </div>
+
+    <div class="col col-6 border border-2 border-primary shadow ms-2 mt-3">
+      <p class="lead fs-4 text-primary">Directiva Estructural *ngFor Frutas: {{frutas.length}}</p>
+      <p class="lead fs-4 text-primary">total de Frutas Dulces: {{frutasDulce.length}}</p>
+
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th>Fruta</th>
+            <th>Precio S/.</th>
+            <th>Vitamina</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of frutas">
+            <td>{{f.nombre}}</td>
+            <td>{{f.precio}}</td>
+            <td>{{f.propiedad}}</td>
+            <td>{{f.tipo}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>

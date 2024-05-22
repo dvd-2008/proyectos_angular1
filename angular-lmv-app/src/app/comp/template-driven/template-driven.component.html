@@ -1,0 +1,71 @@
+<main class="container">
+    <section class="row">
+        <aside class="col col-5 border border-2 border-primary shadow me-2">
+            <p class="lead fs-2 text-primary">Form de fruta (Template)</p>
+
+            <form #frutaForm="ngForm" (ngSubmit)="registrarFruta(frutaForm.value); frutaForm.reset()">
+
+                <div class="form-group">
+                    <label class="label lead text-primary">Nombre</label>
+                    <input type="text" class="form-control mb-4 lead fs-4 text-primary" minlength="3" maxlength="10"
+                        required name="nombre" #nombreRef="ngModel" ngModel />
+
+                    <div *ngIf="nombreRef.errors && (nombreRef.dirty || nombreRef.touched)"
+                        class="alert alert-danger mt-2 lead">
+
+                        <div [hidden]="!nombreRef?.errors?.['required']">
+                            Nombre de la fruta es obligatorio
+                        </div>
+
+                        <div [hidden]="!nombreRef?.errors?.['minlength']">
+                            Al menos debe ingresar 3 caracteres al nombre de la fruta
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="label lead text-primary">Precio</label>
+                    <input type="text" class="form-control fs-4 text-primary" required name="precio"
+                        #precioRef="ngModel" ngModel (keypress)="validaPrecio($event)" />
+
+                    <div *ngIf="precioRef.errors && (precioRef.dirty || precioRef.touched)"
+                        class="alert alert-danger mt-2 lead">
+
+                        <div [hidden]="!precioRef?.errors?.['required']">
+                            Precio debe tener maximo 3 decimales y es obligatorio
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-sm btn-dark mt-2 mb-3" [disabled]="!frutaForm.form.valid">Registrar</button>
+                </div>
+
+            </form>
+
+        </aside>
+
+
+        <aside class="col col-6 border border-2 border-primary shadow">
+            <p class="lead fs-4 text-primary">Resultado: {{resultado | json}}</p>
+            <p class="lead fs-4 text-primary">{{etiqueta}}</p>
+            <hr/>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Fruta</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of frutas">
+                        <td>{{f.nombre}}</td>
+                        <td>{{f.precio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </aside>
+    </section>
+</main>

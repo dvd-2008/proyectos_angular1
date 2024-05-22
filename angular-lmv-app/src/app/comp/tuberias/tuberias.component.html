@@ -1,0 +1,87 @@
+<main>
+    <section class="row">
+        <p [ngClass]="'lead fs-2 text-primary'">Pipe para vistas influencer</p>
+        <div class="col col-4 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">Vistas sin pipe (invalido): <b>{{nroVistaInvalido | number}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas sin pipe (iniciando): <b>{{nroVistaIniciando}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas sin pipe (cierta audiencia): <b>{{nroVistaCiertaAudiencia}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas sin pipe (promedio): <b>{{nroVistaPromedio}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas sin pipe (gran influencer): <b>{{nroVistaGranInfluencer | number}}</b></p>
+        </div>
+        <div class="col col-7 border border-2 border-primary shadow m-2">
+            <p class="lead fs-4 text-primary">Vistas con pipe: <b>{{nroVistaInvalido | vistas}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas con pipe: <b>{{nroVistaIniciando | vistas}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas con pipe: <b>{{nroVistaCiertaAudiencia | vistas}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas con pipe: <b>{{nroVistaPromedio | vistas}}</b></p>
+            <p class="lead fs-4 text-primary">Vistas con pipe: <b>{{nroVistaGranInfluencer | vistas}}</b></p>
+        </div>
+    </section>
+    <hr/>
+    <section class="row">
+        <p [ngClass]="'lead fs-2 text-primary'">Revision de Pipes en angular</p>
+        <div class="col col-5 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">Parrafo sin pipe: <b>{{parrafo}}</b></p>
+        </div>
+        <div class="col col-6 border border-2 border-primary shadow m-2">
+            <p class="lead fs-4 text-primary">Parrafo con pipe (uppercase): <b>{{parrafo | uppercase}}</b></p>
+        </div>
+    </section>
+    <hr/>
+    <section class="row">
+        <div class="col col-5 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">Libro sin pipe: <b>{{titulo}}</b></p>
+        </div>
+        <div class="col col-6 border border-2 border-primary shadow m-2">
+            <p class="lead fs-4 text-primary">Libro con pipe (lowercase): <b>{{titulo | lowercase}}</b></p>
+        </div>
+    </section>
+    <hr/>
+    <section class="row">
+        <div class="col col-5 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">IGV sin pipe: <b>{{IGV}}</b></p>
+            <p class="lead fs-4 text-primary">IMP RENTA 5TA sin pipe: <b>{{IMP_RENTA5}}</b></p>
+        </div>
+        <div class="col col-6 border border-2 border-primary shadow m-2">
+            <p class="lead fs-4 text-primary">IGV con pipe (percent): <b>{{IGV | percent}}</b></p>
+            <p class="lead fs-4 text-primary">IMP RENTA 5TA con pipe (percent): <b>{{IMP_RENTA5 | percent}}</b></p>
+        </div>
+    </section>
+    <hr/>
+    <section class="row">
+        <div class="col col-5 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">precio sin pipe: <b>{{precio}}</b></p>
+        </div>
+        <div class="col col-6 border border-2 border-primary shadow m-2">
+            <p class="lead fs-4 text-primary">precio con pipe (number por default 3 decimales): <b>{{precio | number}}</b></p>
+            <p class="lead fs-4 text-primary">precio con pipe (number 5 decimales): <b>{{precio | number:'1.0-5'}}</b></p>
+            <p class="lead fs-4 text-primary">precio con pipe (number 2 decimales): <b>{{precio | number:'1.0-2'}}</b></p>
+        </div>
+    </section>
+    <hr/>
+    <section class="row">
+        <div class="col col-5 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">ahorro sin pipe: <b>{{ahorro}}</b></p>
+        </div>
+        <div class="col col-6 border border-2 border-primary shadow m-2">
+            <p class="lead fs4 text-sucess">La ISO 4217 (3 LETRAS)</p>
+            <p class="lead fs-4 text-primary">ahorro con pipe (currency por default dolar): <b>{{ahorro | currency}}</b></p>
+            <p class="lead fs-4 text-primary">ahorro con pipe (currency Japon): <b>{{ahorro | currency:'JPY'}}</b></p>
+            <p class="lead fs-4 text-primary">ahorro con pipe (currency Euro): <b>{{ahorro | currency:'EUR'}}</b></p>
+            <p class="lead fs-4 text-primary">ahorro con pipe (currency Peru): <b>{{ahorro | currency:'PEN'}}</b></p>
+            <p class="lead fs-4 text-primary">ahorro con pipe (currency Peru): <b>{{ahorro | currency:'S/.':'symbol':'1.4-4'}}</b></p>
+        </div>
+    </section>
+    <hr/>
+    <section class="row">
+        <div class="col col-5 border border-2 border-primary shadow ms-2 me-2">
+            <p class="lead fs-4 text-primary">fecha sin pipe: <b>{{fecha}}</b></p>
+        </div>
+        <div class="col col-6 border border-2 border-primary shadow m-2">
+            <p class="lead fs-4 text-primary">fecha con pipe (date): <b>{{fecha | date}}</b></p>
+            <p class="lead fs-4 text-primary">fecha con pipe (date dd/MM/yyyy): <b>{{fecha | date:'dd/MM/yyyy'}}</b></p>
+            <p class="lead fs-4 text-primary">fecha con pipe (date dd/MM/yyyy HH:mm:ss): <b>{{fecha | date:'dd/MM/yyyy HH:mm:ss'}}</b></p>
+            <p class="lead fs-4 text-primary">fecha con pipe (date dd/MM/yyyy shortTime): <b>{{fecha | date:'dd/MM/yyyy'}} {{fecha | date:'shortTime'}}</b></p>
+        </div>
+    </section>
+    <hr/>
+</main>

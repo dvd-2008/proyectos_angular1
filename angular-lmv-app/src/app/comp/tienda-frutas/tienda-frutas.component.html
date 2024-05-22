@@ -1,0 +1,32 @@
+<main>
+    <section class="row">
+        <aside class="col col-4 border border-2 border-primary shadow ms-2">
+            <p class="lead fs-4 text-primary">Tienda Frutas Total: {{frutas.length}}</p>
+
+            <article class="bg-light border border-start-3 border-top-0 border-bottom-0 
+                border-end-0 border-3 border-success rounded p-2 shadow ">
+                <label class="label fs-4 lead text-primary">Busqueda por nombre, tipo:</label>
+                <input type="text" [(ngModel)]="consulta" class="form-control text-primary"/>
+            </article>
+
+        </aside>
+        <section class="col col-7 border border-2 border-primary shadow ms-2">
+            <p class="lead fs-4 text-primary">Resultado</p>
+            <main class="row">
+                <section class="col col-4" *ngFor="let f of frutas | buscadorFrutas:consulta">
+                    <div class="card m-2 shadow">
+                       <div class="card-header bg-primary text-white">
+                            {{f.nombre}} Precio: {{f.precio | currency:'S/.':'symbol':'1.0-2'}}
+                       </div>     
+                       <div class="card-body">
+                            <img src={{f.imagen}} alt="imagen" class="img-fluid"/>
+                       </div>
+                       <div class="card-footer bg-warning text-white">
+                            Tipo: {{f.tipo}}
+                       </div>     
+                    </div>
+                </section>
+            </main>    
+        </section>
+    </section>
+</main>
